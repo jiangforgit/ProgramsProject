@@ -9,9 +9,6 @@ import programs.publicmodule.core.enums.EnumApkVersion;
  */
 public class Constant {
 
-    public final static String PublicDbName = "ProgramsDb.data";//数据库名
-    public final static int PublicDbVersion = 1;//数据库版本
-
     public final static EnumApkVersion APK_VERSION = EnumApkVersion.studyprogramApkVs;//apk当前版本
     public final static EnumAgent agent = EnumAgent.studyprogram;//项目代号
 
