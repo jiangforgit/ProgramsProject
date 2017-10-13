@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ProgramsProject.iml" filepath="$PROJECT_DIR$/ProgramsProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/publicmodule/publicmodule.iml" filepath="$PROJECT_DIR$/publicmodule/publicmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/remoteprogram/remoteprogram.iml" filepath="$PROJECT_DIR$/remoteprogram/remoteprogram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/studyprogram/studyprogram.iml" filepath="$PROJECT_DIR$/studyprogram/studyprogram.iml" />
+    </modules>
+  </component>
+</project>
