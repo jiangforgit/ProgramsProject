@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import programs.publicmodule.R;
+import programs.publicmodule.core.db.tables.TableOrder;
 
 /**
  * Created by caijiang.chen on 2017/10/13.
@@ -45,26 +46,23 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         // 创建表
-//        try {
-//            TableUtils.createTable(connectionSource, PackageInfo.class);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            TableUtils.createTable(connectionSource, TableOrder.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-//        try
-//        {
-//            TableUtils.dropTable(connectionSource, PackageInfo.class, true);
-//            TableUtils.dropTable(connectionSource, Photographer.class, true);
-//            TableUtils.dropTable(connectionSource, Theme.class, true);
-//            TableUtils.dropTable(connectionSource, Img.class, true);
-//            onCreate(sqLiteDatabase, connectionSource);
-//        } catch (SQLException e)
-//        {
-//            e.printStackTrace();
-//        }
+        try
+        {
+            TableUtils.dropTable(connectionSource, TableOrder.class, true);
+            onCreate(database, connectionSource);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public synchronized Dao getDao(Class clazz) throws SQLException {
