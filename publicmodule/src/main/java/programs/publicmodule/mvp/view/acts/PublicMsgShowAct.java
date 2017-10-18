@@ -8,6 +8,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import programs.publicmodule.R;
+import programs.publicmodule.R2;
 import programs.publicmodule.core.base.CompatActBase;
 import programs.publicmodule.core.db.tables.TableOrder;
 import programs.publicmodule.mvp.presenter.PublicMsgShowPresenter;
@@ -15,7 +16,7 @@ import programs.publicmodule.mvp.view.interfaces.IPublicMsgShowView;
 
 public class PublicMsgShowAct extends CompatActBase implements IPublicMsgShowView {
 
-    @BindView(R.id.tv_public_msg_show)
+    @BindView(R2.id.tv_public_msg_show)
     TextView tvPublicMsgShow;
 
     private Unbinder unbinder;
