@@ -57,8 +57,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try
         {
-            TableUtils.dropTable(connectionSource, TableOrder.class, true);
-            onCreate(database, connectionSource);
+            getDao(TableOrder.class).executeRaw("ALTER TABLE 'ORDER' ADD COLUMN TASK_ID VARCHAR");
+//            TableUtils.dropTable(connectionSource, TableOrder.class, true);
+//            onCreate(database, connectionSource);
         } catch (SQLException e)
         {
             e.printStackTrace();
