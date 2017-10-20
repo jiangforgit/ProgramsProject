@@ -1,8 +1,6 @@
 package programs.publicmodule.core.db.helper;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -14,8 +12,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import programs.publicmodule.R;
-import programs.publicmodule.core.db.tables.TableOrder;
+import programs.publicmodule.core.db.tables.TableTask;
 
 /**
  * Created by caijiang.chen on 2017/10/13.
@@ -47,7 +44,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         // 创建表
         try {
-            TableUtils.createTable(connectionSource, TableOrder.class);
+            TableUtils.createTable(connectionSource, TableTask.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,15 +52,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-        try
-        {
-            getDao(TableOrder.class).executeRaw("ALTER TABLE 'ORDER' ADD COLUMN TASK_ID VARCHAR");
-//            TableUtils.dropTable(connectionSource, TableOrder.class, true);
+//        try
+//        {
+//            getDao(TableTask.class).executeRaw("ALTER TABLE 'TASK' ADD COLUMN BUSI_ID VARCHAR");
+//            TableUtils.dropTable(connectionSource, TableTask.class, true);
 //            onCreate(database, connectionSource);
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
+//        } catch (SQLException e)
+//        {
+//            e.printStackTrace();
+//        }
     }
 
     public synchronized Dao getDao(Class clazz) throws SQLException {

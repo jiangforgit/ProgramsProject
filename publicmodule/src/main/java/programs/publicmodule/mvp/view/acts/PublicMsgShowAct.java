@@ -10,7 +10,7 @@ import butterknife.Unbinder;
 import programs.publicmodule.R;
 import programs.publicmodule.R2;
 import programs.publicmodule.core.base.CompatActBase;
-import programs.publicmodule.core.db.tables.TableOrder;
+import programs.publicmodule.core.db.tables.TableTask;
 import programs.publicmodule.mvp.presenter.PublicMsgShowPresenter;
 import programs.publicmodule.mvp.view.interfaces.IPublicMsgShowView;
 
@@ -45,10 +45,10 @@ public class PublicMsgShowAct extends CompatActBase implements IPublicMsgShowVie
     }
 
     @Override
-    public void showOrderList(List<TableOrder> orders) {
+    public void showOrderList(List<TableTask> orders) {
         StringBuffer sb = new StringBuffer();
-        for (TableOrder order : orders){
-            sb.append("id="+order.getId()+",orderId="+order.getOrderId()+",orderType="+order.getOrderType()+",orderValue="+order.getOrderValue()+"\n");
+        for (TableTask order : orders){
+            sb.append("TASK_VALUE="+order.getTASK_VALUE()+"\n");
         }
         tvPublicMsgShow.setText(sb.toString());
     }

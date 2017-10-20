@@ -3,14 +3,17 @@ package programs.publicmodule.core.db.tables;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.sql.Date;
+
 /**
  * Created by caijiang.chen on 2017/10/19.
  */
 
-@DatabaseTable(tableName = "ORDER_CONTENT")
-public class TableOrderContent {
-    @DatabaseField(generatedId = true)
-    private int ID;
+@DatabaseTable(tableName = "TASK_CONTENT")
+public class TableTaskContent {
+
+    @DatabaseField(id = true)
+    private String TASK_CONTENT_ID;
 
     @DatabaseField
     private int CONTENT_TYPE;
@@ -22,20 +25,23 @@ public class TableOrderContent {
     private String CONTENT_VALUE;
 
     @DatabaseField
-    private int MARK;
+    private int VALUE_TYPE;
 
     @DatabaseField
-    private int MARK_RESULT;
+    private int MARK;
 
     @DatabaseField(foreign = true)
-    private String FOREIGN_KEY;
+    private String TASK_ID;
 
-    public int getID() {
-        return ID;
+    @DatabaseField
+    private Date DATE_TIME;
+
+    public String getTASK_CONTENT_ID() {
+        return TASK_CONTENT_ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setTASK_CONTENT_ID(String TASK_CONTENT_ID) {
+        this.TASK_CONTENT_ID = TASK_CONTENT_ID;
     }
 
     public int getCONTENT_TYPE() {
@@ -62,6 +68,14 @@ public class TableOrderContent {
         this.CONTENT_VALUE = CONTENT_VALUE;
     }
 
+    public int getVALUE_TYPE() {
+        return VALUE_TYPE;
+    }
+
+    public void setVALUE_TYPE(int VALUE_TYPE) {
+        this.VALUE_TYPE = VALUE_TYPE;
+    }
+
     public int getMARK() {
         return MARK;
     }
@@ -70,19 +84,19 @@ public class TableOrderContent {
         this.MARK = MARK;
     }
 
-    public int getMARK_RESULT() {
-        return MARK_RESULT;
+    public String getTASK_ID() {
+        return TASK_ID;
     }
 
-    public void setMARK_RESULT(int MARK_RESULT) {
-        this.MARK_RESULT = MARK_RESULT;
+    public void setTASK_ID(String TASK_ID) {
+        this.TASK_ID = TASK_ID;
     }
 
-    public String getFOREIGN_KEY() {
-        return FOREIGN_KEY;
+    public Date getDATE_TIME() {
+        return DATE_TIME;
     }
 
-    public void setFOREIGN_KEY(String FOREIGN_KEY) {
-        this.FOREIGN_KEY = FOREIGN_KEY;
+    public void setDATE_TIME(Date DATE_TIME) {
+        this.DATE_TIME = DATE_TIME;
     }
 }

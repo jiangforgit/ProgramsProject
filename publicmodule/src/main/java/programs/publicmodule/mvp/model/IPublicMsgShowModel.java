@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
-import programs.publicmodule.core.db.tables.TableOrder;
+import programs.publicmodule.core.db.tables.TableTask;
 
 /**
  * Created by caijiang.chen on 2017/10/17.
@@ -12,5 +12,5 @@ import programs.publicmodule.core.db.tables.TableOrder;
 
 public interface IPublicMsgShowModel {
 
-    List<TableOrder> testTableOrder(Context context);
+    List<TableTask> testTableOrder(Context context);
 }

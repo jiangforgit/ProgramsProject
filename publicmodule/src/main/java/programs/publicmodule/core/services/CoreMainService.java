@@ -17,6 +17,7 @@ import java.net.SocketException;
 import programs.publicmodule.AIDLProcessKeep;
 import programs.publicmodule.core.deals.CoreMainDeal;
 import programs.publicmodule.core.enums.EnumMainServiceCmd;
+import programs.publicmodule.core.threadpool.PublicThreadPool;
 
 public class CoreMainService extends Service {
 
@@ -58,6 +59,17 @@ public class CoreMainService extends Service {
 
     private void initReceiveThread(){
         receiveDataThread = new ReceiveDataThread(datagramSocket);
+        receiveDataThread.setReceiveDataListener(new ReceiveDataThread.IReceiveDataCallBack() {
+            @Override
+            public void receiveData(final String data) {
+                PublicThreadPool.getPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        CoreMainDeal.getInstance().dealReceiveDataFromSocket(data);
+                    }
+                });
+            }
+        });
         receiveDataThread.start();
     }
 
@@ -97,12 +109,12 @@ public class CoreMainService extends Service {
                 initDataGramSocket();
                 initReceiveThread();
             }
-            new Thread(new Runnable() {
+            PublicThreadPool.getPool().execute(new Runnable() {
                 @Override
                 public void run() {
                     CoreMainDeal.getInstance().sendHeartBeatPack(datagramSocket,"220.162.239.101",28888,"<T><TH><category>Pos</category></TH></T>");
                 }
-            }).start();
+            });
         }
     }
 

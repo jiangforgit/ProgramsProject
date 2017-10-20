@@ -14,6 +14,15 @@ public class ReceiveDataThread extends Thread {
 
     private final String TAG = "ReceiveDataThread";
     private DatagramSocket receiveSocket;
+    private IReceiveDataCallBack receiveDataListener;
+
+    public void setReceiveDataListener(IReceiveDataCallBack callBack){
+        this.receiveDataListener = callBack;
+    }
+
+    public interface IReceiveDataCallBack{
+        void receiveData(String data);
+    }
 
     public ReceiveDataThread(DatagramSocket ds){
         this.receiveSocket = ds;
@@ -40,6 +49,9 @@ public class ReceiveDataThread extends Thread {
             // 取得数据包里的内容
             String data = new String(datapack.getData(), 0, datapack.getLength());
             Log.i(TAG,"data="+data);
+            if(null != receiveDataListener){
+                receiveDataListener.receiveData(data);
+            }
         }
     }
 }

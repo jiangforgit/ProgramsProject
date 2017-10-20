@@ -3,6 +3,8 @@ package programs.publicmodule.core.db.tables;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.sql.Date;
+
 /**
  * Created by caijiang.chen on 2017/10/19.
  */
@@ -10,8 +12,8 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "SENDING_LOG")
 public class TableSendingLog {
 
-    @DatabaseField(generatedId = true)
-    private int ID;
+    @DatabaseField(id = true)
+    private String LOG_ID;
 
     @DatabaseField
     private int LOG_TYPE;
@@ -25,12 +27,15 @@ public class TableSendingLog {
     @DatabaseField(foreign = true)
     private String FOREIGN_KEY;
 
-    public int getID() {
-        return ID;
+    @DatabaseField
+    private Date DATE_TIME;
+
+    public String getLOG_ID() {
+        return LOG_ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setLOG_ID(String LOG_ID) {
+        this.LOG_ID = LOG_ID;
     }
 
     public int getLOG_TYPE() {
@@ -63,5 +68,13 @@ public class TableSendingLog {
 
     public void setFOREIGN_KEY(String FOREIGN_KEY) {
         this.FOREIGN_KEY = FOREIGN_KEY;
+    }
+
+    public Date getDATE_TIME() {
+        return DATE_TIME;
+    }
+
+    public void setDATE_TIME(Date DATE_TIME) {
+        this.DATE_TIME = DATE_TIME;
     }
 }
