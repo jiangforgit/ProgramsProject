@@ -62,7 +62,7 @@ public class CoreMainService extends Service {
         receiveDataThread.setReceiveDataListener(new ReceiveDataThread.IReceiveDataCallBack() {
             @Override
             public void receiveData(final String data) {
-                PublicThreadPool.getPool().execute(new Runnable() {
+                PublicThreadPool.getPool().getSingleThreadExecutor().execute(new Runnable() {
                     @Override
                     public void run() {
                         CoreMainDeal.getInstance().dealReceiveDataFromSocket(data);
@@ -109,7 +109,7 @@ public class CoreMainService extends Service {
                 initDataGramSocket();
                 initReceiveThread();
             }
-            PublicThreadPool.getPool().execute(new Runnable() {
+            PublicThreadPool.getPool().getSingleThreadExecutor().execute(new Runnable() {
                 @Override
                 public void run() {
                     CoreMainDeal.getInstance().sendHeartBeatPack(datagramSocket,"220.162.239.101",28888,"<T><TH><category>Pos</category></TH></T>");
