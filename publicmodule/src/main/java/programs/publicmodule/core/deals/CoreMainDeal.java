@@ -36,10 +36,4 @@ public class CoreMainDeal {
             e.printStackTrace();
         }
     }
-
-    public synchronized void dealReceiveDataFromSocket(String data){
-        synchronized (CoreMainDeal.class){
-
-        }
-    }
 }

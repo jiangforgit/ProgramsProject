@@ -14,9 +14,13 @@ public class PackageManager {
 
     }
 
-    public PackageManager getInstance(){
+    private static synchronized void syncInit(){
+        if(null == instance) instance = new PackageManager();
+    }
+
+    public static PackageManager getInstance(){
         if(null == instance){
-            instance = new PackageManager();
+            syncInit();
         }
         return instance;
     }

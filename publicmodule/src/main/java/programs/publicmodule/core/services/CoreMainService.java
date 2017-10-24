@@ -1,7 +1,6 @@
 package programs.publicmodule.core.services;
 
 import android.app.Service;
-import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +16,7 @@ import java.net.SocketException;
 import programs.publicmodule.AIDLProcessKeep;
 import programs.publicmodule.core.deals.CoreMainDeal;
 import programs.publicmodule.core.enums.EnumMainServiceCmd;
+import programs.publicmodule.core.factorys.ReceivedDataFactory;
 import programs.publicmodule.core.threadpool.PublicThreadPool;
 
 public class CoreMainService extends Service {
@@ -65,7 +65,7 @@ public class CoreMainService extends Service {
                 PublicThreadPool.getPool().getSingleThreadExecutor().execute(new Runnable() {
                     @Override
                     public void run() {
-                        CoreMainDeal.getInstance().dealReceiveDataFromSocket(data);
+                        ReceivedDataFactory.dispather().ondispatch(data);
                     }
                 });
             }
