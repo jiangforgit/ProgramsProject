@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/publicmodule/publicmodule.iml" filepath="$PROJECT_DIR$/publicmodule/publicmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/remoteprogram/remoteprogram.iml" filepath="$PROJECT_DIR$/remoteprogram/remoteprogram.iml" />
       <module fileurl="file://$PROJECT_DIR$/studyprogram/studyprogram.iml" filepath="$PROJECT_DIR$/studyprogram/studyprogram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uploadFileDemo/uploadFileDemo.iml" filepath="$PROJECT_DIR$/uploadFileDemo/uploadFileDemo.iml" />
     </modules>
   </component>
 </project>

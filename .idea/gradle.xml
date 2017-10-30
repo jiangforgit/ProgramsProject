@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/publicmodule" />
             <option value="$PROJECT_DIR$/remoteprogram" />
             <option value="$PROJECT_DIR$/studyprogram" />
+            <option value="$PROJECT_DIR$/uploadFileDemo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

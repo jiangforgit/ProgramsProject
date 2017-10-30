@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- 白色 -->
+<color name="wite">#fffffb</color>
+<!-- 黑色 -->
+<color name="black">#130c0e</color>
+<!-- 蓝色 -->
+<color name="blue">#ff00aff0</color>
+<!-- 甘蓝色 -->
+<color name="ganlan">#494e8f</color>
+<!-- 红色 -->
+<color name="red">#d71345</color>
+<!-- 绯色 -->
+<color name="feise">#aa2116</color>
+<!-- 青竹色 -->
+<color name="qingzu">#72baa7</color>
+<!-- 水色 -->
+<color name="shuise">#afdfe4</color>
+<!-- 新桥色 -->
+<color name="xinqiao">#50b7c1</color>
+<!-- 浅绿色 -->
+<color name="qianlv">#84bf96</color>
+<!-- 淡黄色 -->
+<color name="danhuang">#dec674</color>
+<!-- 柳色 -->
+<color name="liuse">#78a355</color>
+<!-- 薄绿色 -->
+<color name="baolv">#1d953f</color>
+<!-- 箬竹色 -->
+<color name="ruozhu">#65c294</color>
+<!-- 灰白色 -->
+<color name="huibai">#d9d6c3</color>
+<!-- 灰色 -->
+<color name="huise">#77787b</color>
+<!-- 钝色 -->
+<color name="dunse">#4f5555</color>
+<!-- 黑橡色 -->
+<color name="heixiang">#3e4145</color>
+<!-- light_gray -->
+<color name="light_gray">#ffb3b3b3</color>
+</resources>
