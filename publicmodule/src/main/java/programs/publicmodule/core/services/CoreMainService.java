@@ -15,8 +15,16 @@ import java.net.SocketException;
 
 import programs.publicmodule.AIDLProcessKeep;
 import programs.publicmodule.core.deals.CoreMainDeal;
+import programs.publicmodule.core.entity.ReceivedDataEntity;
 import programs.publicmodule.core.enums.EnumMainServiceCmd;
+import programs.publicmodule.core.enums.EnumReceivedDataType;
+import programs.publicmodule.core.exceptions.UnknownReceivedDataException;
 import programs.publicmodule.core.factorys.ReceivedDataFactory;
+import programs.publicmodule.core.impls.ReceivedDataOrderVisitor;
+import programs.publicmodule.core.impls.ReceivedDataPosVisitor;
+import programs.publicmodule.core.impls.ReceivedDataSubject;
+import programs.publicmodule.core.interfaces.IReceivedDataSubject;
+import programs.publicmodule.core.interfaces.IReceivedDataVisitor;
 import programs.publicmodule.core.threadpool.PublicThreadPool;
 
 public class CoreMainService extends Service {
@@ -59,18 +67,6 @@ public class CoreMainService extends Service {
 
     private void initReceiveThread(){
         receiveDataThread = new ReceiveDataThread(datagramSocket);
-        receiveDataThread.setReceiveDataListener(new ReceiveDataThread.IReceiveDataCallBack() {
-            @Override
-            public void receiveData(final String data) {
-                PublicThreadPool.getPool().getSingleThreadExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        //采用模板方法模式，根据接收的数据采取对应的模板解析
-                        ReceivedDataFactory.analysor().analyse(data);
-                    }
-                });
-            }
-        });
         receiveDataThread.start();
     }
 

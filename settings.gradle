@@ -1,2 +1,1 @@
 include ':studyprogram', ':publicmodule',':remoteprogram'
-include ':uploadFileDemo'
