@@ -12,7 +12,7 @@ public abstract class AbstractReceivedAnalysor<T> {
         return isReceivedNotNull(str)?analyse(str):null;
     }
 
-    abstract public T analyse(String str);
+abstract public T analyse(String str);
 
     private boolean isReceivedNotNull(String str){
         if(null == str){

@@ -65,7 +65,8 @@ public class CoreMainService extends Service {
                 PublicThreadPool.getPool().getSingleThreadExecutor().execute(new Runnable() {
                     @Override
                     public void run() {
-                        ReceivedDataFactory.dispather().ondispatch(data);
+                        //采用模板方法模式，根据接收的数据采取对应的模板解析
+                        ReceivedDataFactory.analysor().analyse(data);
                     }
                 });
             }
