@@ -75,13 +75,15 @@ public class ReceiveDataThread extends Thread {
         //采用访问者模式处理解析后的数据对象（不同的数据类型有不同的访问者）
         if(receivedData instanceof ReceivedDataEntity){
             String orderType = ((ReceivedDataEntity) receivedData).getDataType();
+            IReceivedDataVisitor visitor;
+            IReceivedDataSubject<ReceivedDataEntity> subject;
             if(EnumReceivedDataType.pos.toString().equals(orderType)){
-                IReceivedDataVisitor posVisitor = new ReceivedDataPosVisitor();
-                IReceivedDataSubject<ReceivedDataEntity> subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
-                subject.accept(posVisitor);
+                visitor = new ReceivedDataPosVisitor();
+                subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
+                subject.accept(visitor);
             }else if(EnumReceivedDataType.order.toString().equals(orderType)){
-                IReceivedDataVisitor visitor = new ReceivedDataOrderVisitor();
-                IReceivedDataSubject<ReceivedDataEntity> subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
+                visitor = new ReceivedDataOrderVisitor();
+                subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
                 subject.accept(visitor);
             }
         }else {
