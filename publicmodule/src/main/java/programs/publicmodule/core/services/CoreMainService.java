@@ -10,21 +10,16 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
+import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
 import programs.publicmodule.AIDLProcessKeep;
-import programs.publicmodule.core.deals.CoreMainDeal;
-import programs.publicmodule.core.entity.ReceivedDataEntity;
+import programs.publicmodule.core.entity.HeartBeatPackEntity;
 import programs.publicmodule.core.enums.EnumMainServiceCmd;
-import programs.publicmodule.core.enums.EnumReceivedDataType;
-import programs.publicmodule.core.exceptions.UnknownReceivedDataException;
-import programs.publicmodule.core.factorys.ReceivedDataFactory;
-import programs.publicmodule.core.impls.ReceivedDataOrderVisitor;
-import programs.publicmodule.core.impls.ReceivedDataPosVisitor;
-import programs.publicmodule.core.impls.ReceivedDataSubject;
-import programs.publicmodule.core.interfaces.IReceivedDataSubject;
-import programs.publicmodule.core.interfaces.IReceivedDataVisitor;
+import programs.publicmodule.core.factorys.UdpSendFactory;
+import programs.publicmodule.core.impls.SendHeartBeat;
+import programs.publicmodule.core.interfaces.ISendHeartBeat;
 import programs.publicmodule.core.threadpool.PublicThreadPool;
 
 public class CoreMainService extends Service {
@@ -109,7 +104,8 @@ public class CoreMainService extends Service {
             PublicThreadPool.getPool().getSingleThreadExecutor().execute(new Runnable() {
                 @Override
                 public void run() {
-                    CoreMainDeal.getInstance().sendHeartBeatPack(datagramSocket,"220.162.239.101",28888,"<T><TH><category>Pos</category></TH></T>");
+                    ISendHeartBeat sendHeartBeat = new SendHeartBeat();
+                    sendHeartBeat.sendHeartBeat(datagramSocket,new HeartBeatPackEntity());
                 }
             });
         }
