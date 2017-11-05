@@ -11,6 +11,7 @@ import programs.publicmodule.core.entity.ReceivedDataEntity;
 import programs.publicmodule.core.enums.EnumReceivedDataType;
 import programs.publicmodule.core.exceptions.UnknownReceivedDataException;
 import programs.publicmodule.core.factorys.ReceivedDataFactory;
+import programs.publicmodule.core.impls.ReceivedDataBusiVisitor;
 import programs.publicmodule.core.impls.ReceivedDataOrderVisitor;
 import programs.publicmodule.core.impls.ReceivedDataPosVisitor;
 import programs.publicmodule.core.impls.ReceivedDataSubject;
@@ -75,15 +76,16 @@ public class ReceiveDataThread extends Thread {
         //采用访问者模式处理解析后的数据对象（不同的数据类型有不同的访问者）
         if(receivedData instanceof ReceivedDataEntity){
             String orderType = ((ReceivedDataEntity) receivedData).getDataType();
-            IReceivedDataVisitor visitor;
-            IReceivedDataSubject<ReceivedDataEntity> subject;
+            IReceivedDataVisitor visitor = null;
             if(EnumReceivedDataType.pos.toString().equals(orderType)){
                 visitor = new ReceivedDataPosVisitor();
-                subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
-                subject.accept(visitor);
             }else if(EnumReceivedDataType.order.toString().equals(orderType)){
                 visitor = new ReceivedDataOrderVisitor();
-                subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
+            }else if(EnumReceivedDataType.busi.toString().equals(orderType)){
+                visitor = new ReceivedDataBusiVisitor();
+            }
+            IReceivedDataSubject<ReceivedDataEntity> subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);;
+            if(null != visitor){
                 subject.accept(visitor);
             }
         }else {

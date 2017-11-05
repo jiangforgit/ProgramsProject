@@ -25,7 +25,6 @@ public class ReceivedDataPosVisitor implements IReceivedDataVisitor {
 
     private TableTask convert2TableTask(ReceivedDataEntity dataEntity){
 
-
         return null;
     }
 
