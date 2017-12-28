@@ -9,8 +9,12 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import programs.publicmodule.R;
 import programs.publicmodule.R2;
+import programs.publicmodule.core.appconstant.ProgramsApplication;
 import programs.publicmodule.core.base.CompatActBase;
 import programs.publicmodule.core.db.tables.TableTask;
+import programs.publicmodule.dagger2.components.DaggerPublicMsgShowComponent;
+import programs.publicmodule.dagger2.components.PublicMsgShowComponent;
+import programs.publicmodule.dagger2.modules.PublicMsgShowModule;
 import programs.publicmodule.mvp.presenter.PublicMsgShowPresenter;
 import programs.publicmodule.mvp.view.interfaces.IPublicMsgShowView;
 
@@ -29,7 +33,16 @@ public class PublicMsgShowAct extends CompatActBase implements IPublicMsgShowVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_msg_show);
         unbinder = ButterKnife.bind(this);
+        setComponent();
         initData();
+    }
+
+    private void setComponent(){
+        DaggerPublicMsgShowComponent.builder()
+                .appComponent(ProgramsApplication.getInstant().getAppComponent())
+                .publicMsgShowModule(new PublicMsgShowModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override

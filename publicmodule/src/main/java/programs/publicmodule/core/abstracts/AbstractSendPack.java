@@ -7,10 +7,11 @@ package programs.publicmodule.core.abstracts;
 public abstract class AbstractSendPack {
 
     protected String getHostIp(){
-        return "220.162.239.101";
+//        return "220.162.239.101";
+        return "120.78.199.234";
     }
 
     protected int getHostPort(){
-        return 28888;
+        return 23023;
     }
 }

@@ -9,12 +9,13 @@ import programs.studyprogram.dagger2.modules.StudyFunctionModule;
 import programs.studyprogram.dagger2.scope.ActivityScope;
 import programs.studyprogram.mvp.model.StudyFunctionModel;
 import programs.studyprogram.mvp.view.acts.StudyFunctionAct;
+import programs.studyprogram.retrofit2.apiservices.ConfigObtainService;
 
 /**
  * Created by Administrator on 2017/2/15 0015.
  */
 @ActivityScope
-@Component(modules = StudyFunctionModule.class,dependencies = AppComponent.class)
+@Component(dependencies = AppComponent.class,modules = StudyFunctionModule.class)
 public interface StudyFunctionComponent {
     void inject(StudyFunctionAct act);
 }

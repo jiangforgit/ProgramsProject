@@ -27,39 +27,9 @@ import retrofit2.Response;
 
 public class StudyFunctionModel implements IStudyFunctionModel {
 
-    private String showValue;
-    private NetApiService netApiService;
-    private ConfigObtainService configObtainService;
-
+    @Inject
     public StudyFunctionModel(){
 
-    }
-
-    @Override
-    public String getShowValue() {
-        return showValue;
-    }
-
-    @Override
-    public NetApiService getNetApiService() {
-        return netApiService;
-    }
-
-    @Override
-    public ConfigObtainService getConfigObtainService() {
-        return configObtainService;
-    }
-
-    public void setConfigObtainService(ConfigObtainService configObtainService) {
-        this.configObtainService = configObtainService;
-    }
-
-    public void setShowValue(String showValue) {
-        this.showValue = showValue;
-    }
-
-    public void setNetApiService(NetApiService netApiService) {
-        this.netApiService = netApiService;
     }
 
     @Override

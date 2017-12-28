@@ -1,6 +1,5 @@
 package programs.studyprogram.mvp.view.acts;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,28 +10,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
-import okhttp3.ResponseBody;
 import programs.publicmodule.core.appconstant.ProgramsApplication;
 import programs.publicmodule.core.services.CoreMainService;
 import programs.publicmodule.core.services.RemoteProcessService;
+import programs.publicmodule.retrofit2.apiservices.NetApiService;
 import programs.publicmodule.retrofit2.responsepack.RequestResPack;
 import programs.studyprogram.R;
 import programs.studyprogram.dagger2.components.DaggerStudyFunctionComponent;
@@ -40,9 +31,7 @@ import programs.studyprogram.dagger2.components.StudyFunctionComponent;
 import programs.studyprogram.dagger2.modules.StudyFunctionModule;
 import programs.studyprogram.mvp.presenter.StudyFunctionPresenter;
 import programs.studyprogram.mvp.view.interfaces.IStudyFunctionView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import programs.studyprogram.retrofit2.apiservices.ConfigObtainService;
 
 public class StudyFunctionAct extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, IStudyFunctionView {
@@ -68,7 +57,7 @@ public class StudyFunctionAct extends AppCompatActivity
     private void setComponent() {
         DaggerStudyFunctionComponent.builder()
                 .appComponent(ProgramsApplication.getInstant().getAppComponent())
-                .studyFunctionModule(new StudyFunctionModule(this,ProgramsApplication.getInstant().getAppComponent().getRetrofit()))
+                .studyFunctionModule(new StudyFunctionModule(this))
                 .build()
                 .inject(this);
     }

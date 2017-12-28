@@ -1,6 +1,8 @@
 package programs.publicmodule.dagger2.components;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+
 import javax.inject.Singleton;
 import dagger.Component;
 import programs.publicmodule.dagger2.modules.ApiServiceModule;

@@ -1,8 +1,11 @@
 package programs.publicmodule.dagger2.modules;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -28,6 +31,14 @@ public class AppModule {
 
     @Provides
     @Singleton
+    @Named("default")
+    SharedPreferences provideDefaultPreferences(){
+        return PreferenceManager.getDefaultSharedPreferences(application);
+    }
+
+    @Provides
+    @Singleton
+    @Named("key-value")
     SharedPreferences provideSharedPreferences(String name,int mode){
         SharedPreferences sharedPreferences = application.getSharedPreferences(name,mode);
         return sharedPreferences;

@@ -9,12 +9,6 @@ import programs.studyprogram.retrofit2.apiservices.ConfigObtainService;
 
 public interface IStudyFunctionModel {
 
-    String getShowValue();
-
-    NetApiService getNetApiService();
-
-    ConfigObtainService getConfigObtainService();
-
     int getVersionCode();
 
     void myTest();

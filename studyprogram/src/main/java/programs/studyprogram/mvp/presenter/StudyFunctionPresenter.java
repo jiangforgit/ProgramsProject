@@ -1,5 +1,6 @@
 package programs.studyprogram.mvp.presenter;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.io.IOException;
@@ -7,11 +8,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 import okhttp3.ResponseBody;
+import programs.publicmodule.retrofit2.apiservices.NetApiService;
 import programs.publicmodule.retrofit2.responsepack.RequestResPack;
 import programs.studyprogram.mvp.model.IStudyFunctionModel;
 import programs.studyprogram.mvp.model.StudyFunctionModel;
 import programs.studyprogram.mvp.view.acts.StudyFunctionAct;
 import programs.studyprogram.mvp.view.interfaces.IStudyFunctionView;
+import programs.studyprogram.retrofit2.apiservices.ConfigObtainService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,18 +28,21 @@ public class StudyFunctionPresenter {
     IStudyFunctionView view;
     IStudyFunctionModel model;
 
-    @Inject
-    public StudyFunctionPresenter(StudyFunctionAct act, StudyFunctionModel model){
+    NetApiService netApiService;
+    ConfigObtainService configObtainService;
+
+    public StudyFunctionPresenter(StudyFunctionAct act,
+                                  StudyFunctionModel model,
+                                  NetApiService netApiService,
+                                  ConfigObtainService configObtainService){
         this.view = act;
         this.model = model;
-    }
-
-    public void getValueAndShow(){
-        view.showTextValue(model.getShowValue()+"--jnivaue="+model.getVersionCode());
+        this.netApiService = netApiService;
+        this.configObtainService = configObtainService;
     }
 
     public void requestNetService(){
-        Call<List<RequestResPack>> call = model.getNetApiService().getSearchPack("square","retrofit");
+        Call<List<RequestResPack>> call = netApiService.getSearchPack("square","retrofit");
         call.enqueue(new Callback<List<RequestResPack>>() {
             @Override
             public void onResponse(Call<List<RequestResPack>> call, Response<List<RequestResPack>> response) {
@@ -50,7 +56,7 @@ public class StudyFunctionPresenter {
             }
         });
 
-        Call<ResponseBody> resCall = model.getNetApiService().getResponse("square","retrofit");
+        Call<ResponseBody> resCall = netApiService.getResponse("square","retrofit");
         resCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -69,7 +75,7 @@ public class StudyFunctionPresenter {
     }
 
     public void getConfigObtain(){
-        Call<ResponseBody> call = model.getConfigObtainService().getConfigPack("http://www.baidu.com");
+        Call<ResponseBody> call = configObtainService.getConfigPack("http://www.baidu.com");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
