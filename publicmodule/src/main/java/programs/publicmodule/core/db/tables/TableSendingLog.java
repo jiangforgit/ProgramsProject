@@ -24,11 +24,13 @@ public class TableSendingLog {
     @DatabaseField
     private int SEND_STATUS;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField
     private String FOREIGN_KEY;
 
-    @DatabaseField
+    @DatabaseField(format="DATE_STRING")
     private Date DATE_TIME;
+
+    public TableSendingLog(){}
 
     public String getLOG_ID() {
         return LOG_ID;

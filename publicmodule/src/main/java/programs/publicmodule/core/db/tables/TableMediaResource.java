@@ -30,11 +30,13 @@ public class TableMediaResource {
     @DatabaseField
     private int STATUS;
 
-    @DatabaseField(foreign = true)
-    private String TASK_CONTENT_ID;
+    @DatabaseField(foreign = true,columnName = "TASK_CONTENT_ID")
+    private TableTaskContent tableTaskContent;
 
-    @DatabaseField
+    @DatabaseField(format="DATE_STRING")
     private Date DATE_TIME;
+
+    public TableMediaResource(){}
 
     public String getRESOURCE_ID() {
         return RESOURCE_ID;
@@ -84,12 +86,12 @@ public class TableMediaResource {
         this.STATUS = STATUS;
     }
 
-    public String getTASK_CONTENT_ID() {
-        return TASK_CONTENT_ID;
+    public TableTaskContent getTableTaskContent() {
+        return tableTaskContent;
     }
 
-    public void setTASK_CONTENT_ID(String TASK_CONTENT_ID) {
-        this.TASK_CONTENT_ID = TASK_CONTENT_ID;
+    public void setTableTaskContent(TableTaskContent tableTaskContent) {
+        this.tableTaskContent = tableTaskContent;
     }
 
     public Date getDATE_TIME() {

@@ -18,9 +18,6 @@ public class PublicMsgShowModule {
 
     private PublicMsgShowAct act;
 
-    @Inject
-    PublicMsgShowModel publicMsgShowModel;
-
     public PublicMsgShowModule(PublicMsgShowAct act){
         this.act = act;
     }
@@ -33,7 +30,13 @@ public class PublicMsgShowModule {
 
     @Provides
     @PerActivityScope
-    public PublicMsgShowPresenter providePublicMsgShowPresenter(){
+    public PublicMsgShowModel providePublicMsgShowModel(){
+        return new PublicMsgShowModel();
+    }
+
+    @Provides
+    @PerActivityScope
+    public PublicMsgShowPresenter providePublicMsgShowPresenter(PublicMsgShowModel publicMsgShowModel){
         return new PublicMsgShowPresenter(this.act,publicMsgShowModel);
     }
 }

@@ -30,11 +30,13 @@ public class TableTaskContent {
     @DatabaseField
     private int MARK;
 
-    @DatabaseField(foreign = true)
-    private String TASK_ID;
+    @DatabaseField(foreign = true,columnName = "TASK_ID" )
+    private TableTask task;
 
-    @DatabaseField
+    @DatabaseField(format="DATE_STRING")
     private Date DATE_TIME;
+
+    public TableTaskContent(){}
 
     public String getTASK_CONTENT_ID() {
         return TASK_CONTENT_ID;
@@ -84,12 +86,12 @@ public class TableTaskContent {
         this.MARK = MARK;
     }
 
-    public String getTASK_ID() {
-        return TASK_ID;
+    public TableTask getTask() {
+        return task;
     }
 
-    public void setTASK_ID(String TASK_ID) {
-        this.TASK_ID = TASK_ID;
+    public void setTask(TableTask task) {
+        this.task = task;
     }
 
     public Date getDATE_TIME() {

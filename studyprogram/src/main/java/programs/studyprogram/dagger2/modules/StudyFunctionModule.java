@@ -20,9 +20,6 @@ public class StudyFunctionModule {
 
     StudyFunctionAct act;
 
-    @Inject
-    StudyFunctionModel studyFunctionModel;
-
     public StudyFunctionModule(StudyFunctionAct a){
         this.act = a;
     }
@@ -36,13 +33,19 @@ public class StudyFunctionModule {
     @Provides
     @ActivityScope
     public StudyFunctionModel provideStudyFunctionModel(){
-        return studyFunctionModel;
+        return new StudyFunctionModel();
     }
 
     @Provides
     @ActivityScope
-    public StudyFunctionPresenter provideStudyFunctionPresenter(NetApiService netApiService,ConfigObtainService configObtainService){
-        StudyFunctionPresenter presenter = new StudyFunctionPresenter(this.act, studyFunctionModel,netApiService,configObtainService);
+    public StudyFunctionPresenter provideStudyFunctionPresenter(StudyFunctionModel studyFunctionModel,
+                                                                NetApiService netApiService,
+                                                                ConfigObtainService configObtainService){
+        StudyFunctionPresenter presenter = new StudyFunctionPresenter(
+                this.act,
+                studyFunctionModel,
+                netApiService,
+                configObtainService);
         return presenter;
     }
 

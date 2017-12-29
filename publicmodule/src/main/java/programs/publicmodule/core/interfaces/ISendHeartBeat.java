@@ -3,6 +3,7 @@ package programs.publicmodule.core.interfaces;
 import java.net.DatagramSocket;
 
 import programs.publicmodule.core.entity.HeartBeatPackEntity;
+import programs.publicmodule.core.entity.SendPackEntity;
 
 /**
  * Created by caijiang.chen on 2017/11/3.
@@ -10,6 +11,6 @@ import programs.publicmodule.core.entity.HeartBeatPackEntity;
 
 public interface ISendHeartBeat {
 
-    void sendHeartBeat(DatagramSocket datagramSocket, HeartBeatPackEntity entity);
+    void sendHeartBeat(DatagramSocket datagramSocket, SendPackEntity entity);
 
 }

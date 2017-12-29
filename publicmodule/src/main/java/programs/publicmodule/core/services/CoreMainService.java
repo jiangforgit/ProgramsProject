@@ -16,6 +16,7 @@ import java.net.SocketException;
 
 import programs.publicmodule.AIDLProcessKeep;
 import programs.publicmodule.core.entity.HeartBeatPackEntity;
+import programs.publicmodule.core.entity.SendPackEntity;
 import programs.publicmodule.core.enums.EnumMainServiceCmd;
 import programs.publicmodule.core.factorys.UdpSendFactory;
 import programs.publicmodule.core.impls.SendHeartBeat;
@@ -105,7 +106,7 @@ public class CoreMainService extends Service {
                 @Override
                 public void run() {
                     ISendHeartBeat sendHeartBeat = new SendHeartBeat();
-                    sendHeartBeat.sendHeartBeat(datagramSocket,new HeartBeatPackEntity());
+                    sendHeartBeat.sendHeartBeat(datagramSocket,new SendPackEntity());
                 }
             });
         }

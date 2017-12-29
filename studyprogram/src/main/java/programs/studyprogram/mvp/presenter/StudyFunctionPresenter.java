@@ -1,6 +1,7 @@
 package programs.studyprogram.mvp.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import okhttp3.ResponseBody;
+import programs.publicmodule.mvp.view.acts.PublicMsgShowAct;
 import programs.publicmodule.retrofit2.apiservices.NetApiService;
 import programs.publicmodule.retrofit2.responsepack.RequestResPack;
 import programs.studyprogram.mvp.model.IStudyFunctionModel;
@@ -96,5 +98,10 @@ public class StudyFunctionPresenter {
     public void myTest(){
         model.myTest();
         view.myTestView();
+    }
+
+    public void redirectPublicMsg(Context context){
+        Intent it = new Intent(context, PublicMsgShowAct.class);
+        context.startActivity(it);
     }
 }

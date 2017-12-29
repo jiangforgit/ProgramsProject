@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
+import programs.publicmodule.core.db.dbservice.TableTaskService;
 import programs.publicmodule.core.db.helper.DatabaseHelper;
 import programs.publicmodule.core.db.tables.TableTask;
 
@@ -19,26 +20,22 @@ import programs.publicmodule.core.db.tables.TableTask;
 
 public class PublicMsgShowModel implements IPublicMsgShowModel {
 
-    @Inject
     public PublicMsgShowModel(){}
 
     @Override
     public List<TableTask> testTableOrder(Context context) {
         List<TableTask> orders = null;
-        try {
-            TableTask task = new TableTask();
-            task.setORDER_ID("1001");
-            task.setTASK_ID(UUID.randomUUID().toString());
-            task.setTASK_TYPE(1);
-            task.setTASK_VALUE("VALUE");
-            DatabaseHelper helper = DatabaseHelper.getDatabaseHelper(context);
-            Dao orderDao = helper.getDao(TableTask.class);
-            orderDao.create(task);
-            orders = orderDao.queryForAll();
-            helper.close();
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+
+        TableTask task = new TableTask();
+        task.setORDER_ID("1001");
+        task.setTASK_ID(UUID.randomUUID().toString());
+        task.setTASK_TYPE(1);
+        task.setTASK_VALUE("VALUE");
+        TableTaskService tableTaskService = new TableTaskService();
+        tableTaskService.createTask(task);
+
+        orders = tableTaskService.queryAllTasks();
+
         return orders;
     }
 }

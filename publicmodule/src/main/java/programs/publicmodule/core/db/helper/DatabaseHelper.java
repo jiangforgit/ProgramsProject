@@ -12,7 +12,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import programs.publicmodule.core.db.tables.TableMediaResource;
+import programs.publicmodule.core.db.tables.TableSendingLog;
 import programs.publicmodule.core.db.tables.TableTask;
+import programs.publicmodule.core.db.tables.TableTaskContent;
 
 /**
  * Created by caijiang.chen on 2017/10/13.
@@ -45,6 +48,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         // 创建表
         try {
             TableUtils.createTable(connectionSource, TableTask.class);
+            TableUtils.createTable(connectionSource, TableTaskContent.class);
+            TableUtils.createTable(connectionSource, TableMediaResource.class);
+            TableUtils.createTable(connectionSource, TableSendingLog.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,8 +73,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         Dao dao = null;
         String className = clazz.getSimpleName();
         if (daos.containsKey(className)) {
+            dao = daos.get(className);
+        }
+        if(null == dao){
             dao = super.getDao(clazz);
-            daos.put(className, dao);
+            daos.put(className,dao);
         }
         return dao;
     }

@@ -13,7 +13,6 @@ import programs.publicmodule.core.appconstant.ProgramsApplication;
 import programs.publicmodule.core.base.CompatActBase;
 import programs.publicmodule.core.db.tables.TableTask;
 import programs.publicmodule.dagger2.components.DaggerPublicMsgShowComponent;
-import programs.publicmodule.dagger2.components.PublicMsgShowComponent;
 import programs.publicmodule.dagger2.modules.PublicMsgShowModule;
 import programs.publicmodule.mvp.presenter.PublicMsgShowPresenter;
 import programs.publicmodule.mvp.view.interfaces.IPublicMsgShowView;

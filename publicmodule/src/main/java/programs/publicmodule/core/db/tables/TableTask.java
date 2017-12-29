@@ -27,8 +27,10 @@ public class TableTask {
     @DatabaseField
     private int VALUE_TYPE;
 
-    @DatabaseField
+    @DatabaseField(format="DATE_STRING")
     private Date DATE_TIME;
+
+    public TableTask(){}
 
     public String getTASK_ID() {
         return TASK_ID;

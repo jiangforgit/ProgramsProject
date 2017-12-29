@@ -5,10 +5,9 @@ import android.util.Log;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.UnknownHostException;
 
 import programs.publicmodule.core.entity.ReceivedDataEntity;
-import programs.publicmodule.core.enums.EnumReceivedDataType;
+import programs.publicmodule.core.enums.EnumDataPackType;
 import programs.publicmodule.core.exceptions.UnknownReceivedDataException;
 import programs.publicmodule.core.factorys.ReceivedDataFactory;
 import programs.publicmodule.core.impls.ReceivedDataBusiVisitor;
@@ -77,14 +76,14 @@ public class ReceiveDataThread extends Thread {
         if(receivedData instanceof ReceivedDataEntity){
             String orderType = ((ReceivedDataEntity) receivedData).getDataType();
             IReceivedDataVisitor visitor = null;
-            if(EnumReceivedDataType.pos.toString().equals(orderType)){
+            if(EnumDataPackType.pos.toString().equals(orderType)){
                 visitor = new ReceivedDataPosVisitor();
-            }else if(EnumReceivedDataType.order.toString().equals(orderType)){
+            }else if(EnumDataPackType.order.toString().equals(orderType)){
                 visitor = new ReceivedDataOrderVisitor();
-            }else if(EnumReceivedDataType.busi.toString().equals(orderType)){
+            }else if(EnumDataPackType.busi.toString().equals(orderType)){
                 visitor = new ReceivedDataBusiVisitor();
             }
-            IReceivedDataSubject<ReceivedDataEntity> subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);;
+            IReceivedDataSubject<ReceivedDataEntity> subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
             if(null != visitor){
                 subject.accept(visitor);
             }
