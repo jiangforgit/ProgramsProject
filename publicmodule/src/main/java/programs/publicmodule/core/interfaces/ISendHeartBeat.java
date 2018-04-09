@@ -2,7 +2,6 @@ package programs.publicmodule.core.interfaces;
 
 import java.net.DatagramSocket;
 
-import programs.publicmodule.core.entity.HeartBeatPackEntity;
 import programs.publicmodule.core.entity.SendPackEntity;
 
 /**

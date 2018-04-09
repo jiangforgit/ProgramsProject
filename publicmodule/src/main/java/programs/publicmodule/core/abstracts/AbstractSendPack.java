@@ -8,7 +8,8 @@ public abstract class AbstractSendPack {
 
     protected String getHostIp(){
 //        return "220.162.239.101";
-        return "120.78.199.234";
+//        return "120.78.199.234";
+        return "192.168.1.108";
     }
 
     protected int getHostPort(){

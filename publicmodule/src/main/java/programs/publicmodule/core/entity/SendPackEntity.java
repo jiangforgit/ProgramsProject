@@ -5,78 +5,158 @@ import java.util.List;
 
 /**
  * Created by caijiang.chen on 2017/12/29.
+ * <p>
+ *     <h>
+ *         <pid>packid</pid>
+ *         <a>系统代理编码</a>
+ *         <v>1.0</v>
+ *         <t>包type</t>
+ *         <acount>账号</acount>
+ *         <dt>device type</dt>
+ *         <dn>device name</dn>
+ *         <did>device id</did>
+ *         <time>time</time>
+ *     </h>
+ *     <b>
+ *         <msg>
+ *             <![CADATA[内容]]>
+ *         </msg>
+ *         <loc>
+ *              <lt> 高德/百度</lt>
+ *             <lat></lat>
+ *             <lng></lng>
+ *             <addr></addr>
+ *         </loc>
+ *     </b>
+ * </p>
  */
 
 public class SendPackEntity<T> {
 
-    private String packid;
-    private String packtype;
-    private String packversion;
-    private String agent;
-    private String account;
-    private String devicetype;
-    private String deviceid;
+    private String pid;
+    private String a;
+    private String v;
+    private String t;
+    private String acount;
+    private String dt;
+    private String dn;
+    private String did;
+    private String time;
+    private String msg;
+    private String lt;
+    private String lat;
+    private String lng;
+    private String addr;
 
-    private List<T> contents = new ArrayList<T>();
-
-    public String getPackid() {
-        return packid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setPackid(String packid) {
-        this.packid = packid;
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
-    public String getPacktype() {
-        return packtype;
+    public String getA() {
+        return a;
     }
 
-    public void setPacktype(String packtype) {
-        this.packtype = packtype;
+    public void setA(String a) {
+        this.a = a;
     }
 
-    public String getPackversion() {
-        return packversion;
+    public String getV() {
+        return v;
     }
 
-    public void setPackversion(String packversion) {
-        this.packversion = packversion;
+    public void setV(String v) {
+        this.v = v;
     }
 
-    public String getAgent() {
-        return agent;
+    public String getT() {
+        return t;
     }
 
-    public void setAgent(String agent) {
-        this.agent = agent;
+    public void setT(String t) {
+        this.t = t;
     }
 
-    public String getAccount() {
-        return account;
+    public String getAcount() {
+        return acount;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setAcount(String acount) {
+        this.acount = acount;
     }
 
-    public String getDevicetype() {
-        return devicetype;
+    public String getDt() {
+        return dt;
     }
 
-    public void setDevicetype(String devicetype) {
-        this.devicetype = devicetype;
+    public void setDt(String dt) {
+        this.dt = dt;
     }
 
-    public String getDeviceid() {
-        return deviceid;
+    public String getDn() {
+        return dn;
     }
 
-    public void setDeviceid(String deviceid) {
-        this.deviceid = deviceid;
+    public void setDn(String dn) {
+        this.dn = dn;
     }
 
-    public List<T> getContents() {
-        return contents;
+    public String getDid() {
+        return did;
     }
 
+    public void setDid(String did) {
+        this.did = did;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getLt() {
+        return lt;
+    }
+
+    public void setLt(String lt) {
+        this.lt = lt;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
 }

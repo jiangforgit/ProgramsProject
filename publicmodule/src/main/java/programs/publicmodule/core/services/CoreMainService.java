@@ -10,15 +10,12 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
 import programs.publicmodule.AIDLProcessKeep;
-import programs.publicmodule.core.entity.HeartBeatPackEntity;
 import programs.publicmodule.core.entity.SendPackEntity;
 import programs.publicmodule.core.enums.EnumMainServiceCmd;
-import programs.publicmodule.core.factorys.UdpSendFactory;
 import programs.publicmodule.core.impls.SendHeartBeat;
 import programs.publicmodule.core.interfaces.ISendHeartBeat;
 import programs.publicmodule.core.threadpool.PublicThreadPool;
