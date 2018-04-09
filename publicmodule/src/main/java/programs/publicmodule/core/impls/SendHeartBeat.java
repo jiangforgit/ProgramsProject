@@ -2,6 +2,8 @@ package programs.publicmodule.core.impls;
 
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.DatagramSocket;
 
@@ -19,7 +21,7 @@ public class SendHeartBeat extends AbstractSendPack implements ISendHeartBeat {
     @Override
     public void sendHeartBeat(DatagramSocket datagramSocket,SendPackEntity entity) {
         try {
-            UdpSendFactory.udpSend().sendUdpPack(datagramSocket,getHostIp(),getHostPort(),getHeartBeatXml(entity));
+            UdpSendFactory.udpSend().sendUdpPack(datagramSocket,getHostIp(),getHostPort(),getHeartBeatJason(entity));
         } catch (IOException e) {
             Log.e("SendHeartBeat","sendHeartBeat error");
             e.printStackTrace();

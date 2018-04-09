@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
+import programs.publicmodule.core.abstracts.AbstractReceivedDataVisitor;
 import programs.publicmodule.core.entity.ReceivedDataEntity;
 import programs.publicmodule.core.enums.EnumDataPackType;
 import programs.publicmodule.core.exceptions.UnknownReceivedDataException;
@@ -14,6 +15,7 @@ import programs.publicmodule.core.impls.ReceivedDataBusiVisitor;
 import programs.publicmodule.core.impls.ReceivedDataOrderVisitor;
 import programs.publicmodule.core.impls.ReceivedDataPosVisitor;
 import programs.publicmodule.core.impls.ReceivedDataSubject;
+import programs.publicmodule.core.interfaces.IReceivedDataListener;
 import programs.publicmodule.core.interfaces.IReceivedDataSubject;
 import programs.publicmodule.core.interfaces.IReceivedDataVisitor;
 import programs.publicmodule.core.threadpool.PublicThreadPool;
@@ -42,6 +44,10 @@ public class ReceiveDataThread extends Thread {
             // 接收数据包
             try {
                 receiveSocket.receive(datapack);
+                // 取得数据包里的内容
+                String data = new String(datapack.getData(), 0, datapack.getLength());
+                Log.i(TAG,"data="+data);
+                receivedData(data);
             } catch (IOException e) {
                 Log.e(TAG,"receiveSocket IO error");
                 e.printStackTrace();
@@ -49,10 +55,6 @@ public class ReceiveDataThread extends Thread {
                 Log.e(TAG,"receiveSocket error");
                 e.printStackTrace();
             }
-            // 取得数据包里的内容
-            String data = new String(datapack.getData(), 0, datapack.getLength());
-            Log.i(TAG,"data="+data);
-            receivedData(data);
         }
     }
 
@@ -83,6 +85,15 @@ public class ReceiveDataThread extends Thread {
             }else if(EnumDataPackType.busi.toString().equals(orderType)){
                 visitor = new ReceivedDataBusiVisitor();
             }
+            //注册收到消息后的处理回调
+            AbstractReceivedDataVisitor abstractReceivedDataVisitor = (AbstractReceivedDataVisitor)visitor;
+            abstractReceivedDataVisitor.setListener(new IReceivedDataListener() {
+                @Override
+                public void receivedCallBack(ReceivedDataEntity receivedDataEntity) {
+
+                }
+            });
+            //开始接收处理消息
             IReceivedDataSubject<ReceivedDataEntity> subject = new ReceivedDataSubject<ReceivedDataEntity>((ReceivedDataEntity)receivedData);
             if(null != visitor){
                 subject.accept(visitor);
